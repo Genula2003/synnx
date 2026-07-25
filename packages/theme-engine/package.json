@@ -1,0 +1,14 @@
+{
+  "name": "@synora/theme-engine",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@synora/shared-types": "*"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "synora-desktop",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "electron dist/main.js"
+  },
+  "dependencies": {
+    "electron": "^29.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
