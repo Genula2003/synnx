@@ -18,16 +18,16 @@ export const ClayButton: React.FC<ClayButtonProps> = ({
 }) => {
   let themeClass = '';
   if (theme === 'clay') {
-    themeClass = `bg-[#e0e5ec] text-gray-700 shadow-[6px_6px_12px_rgba(163,177,198,0.4),-6px_-6px_12px_rgba(255,255,255,0.8)] border border-transparent hover:scale-[1.02] active:shadow-[inset_4px_4px_8px_rgba(163,177,198,0.4),inset_-4px_-4px_8px_rgba(255,255,255,0.8)]`;
+    themeClass = `bg-[#e0e5ec] text-gray-700 shadow-[8px_8px_16px_rgba(163,177,198,0.5),-8px_-8px_16px_rgba(255,255,255,0.8),inset_2px_2px_4px_rgba(255,255,255,0.4)] border border-transparent hover:scale-[1.03] active:shadow-[inset_6px_6px_12px_rgba(163,177,198,0.5),inset_-6px_-6px_12px_rgba(255,255,255,0.8)]`;
   } else if (theme === 'neon-cyber') {
-    themeClass = `border-2 border-[#ff0055] text-[#ff0055] bg-transparent hover:bg-[#ff0055]/10 shadow-[0_0_15px_rgba(255,0,85,0.25)] hover:shadow-[0_0_25px_rgba(255,0,85,0.5)] active:scale-[0.95]`;
+    themeClass = `border-2 border-[#ff0055] text-[#ff0055] bg-transparent hover:bg-[#ff0055]/15 shadow-[0_0_20px_rgba(255,0,85,0.3)] hover:shadow-[0_0_35px_rgba(255,0,85,0.6)] active:scale-[0.93]`;
   } else if (theme === 'cotton-candy') {
-    themeClass = `border-b-4 border-pink-600/80 bg-pink-400 text-white shadow-[0_4px_10px_rgba(244,114,182,0.25)] hover:bg-pink-500 hover:scale-[1.03] active:border-b-0 active:translate-y-[4px]`;
+    themeClass = `border-b-4 border-pink-600/80 bg-pink-400 text-white shadow-[0_6px_14px_rgba(244,114,182,0.3)] hover:bg-pink-500 hover:scale-[1.04] active:border-b-0 active:translate-y-[4px]`;
   } else if (theme === 'midnight') {
-    themeClass = `border-b-4 border-zinc-800 bg-zinc-700 text-white hover:bg-zinc-600 active:border-b-0 active:translate-y-[4px]`;
+    themeClass = `border-b-4 border-zinc-800 bg-zinc-800/80 text-white shadow-[0_4px_12px_rgba(0,0,0,0.5)] hover:bg-zinc-700 active:border-b-0 active:translate-y-[4px]`;
   } else {
     // Liquid Glass
-    themeClass = `border-b-4 border-blue-700/80 bg-blue-500/80 text-white shadow-[0_4px_12px_rgba(59,130,246,0.3)] hover:bg-blue-600/90 hover:scale-[1.03] active:border-b-0 active:translate-y-[4px]`;
+    themeClass = `border-b-4 border-blue-700/80 bg-blue-500/80 text-white shadow-[0_6px_16px_rgba(59,130,246,0.35)] hover:bg-blue-600/90 hover:scale-[1.04] active:border-b-0 active:translate-y-[4px]`;
   }
 
   const disabledClass = disabled || loading ? 'opacity-50 cursor-not-allowed pointer-events-none' : '';
@@ -35,10 +35,10 @@ export const ClayButton: React.FC<ClayButtonProps> = ({
 
   return (
     <motion.button
-      whileHover={!disabled && !loading ? { scale: 1.05, y: -2, z: 10 } : {}}
+      whileHover={!disabled && !loading ? { scale: 1.05, y: -2 } : {}}
       whileTap={!disabled && !loading ? { scale: 0.95, y: 1 } : {}}
-      transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-      className={`px-5 py-2.5 font-bold tracking-wide rounded-xl select-none outline-none focus:outline-none flex items-center justify-center gap-2 ${themeClass} ${disabledClass} ${className}`}
+      transition={{ type: 'spring', stiffness: 450, damping: 12 }}
+      className={`px-6 py-3 font-bold tracking-wider rounded-xl select-none outline-none focus:outline-none flex items-center justify-center gap-2.5 transition-all ${themeClass} ${disabledClass} ${className}`}
       disabled={disabled || loading}
       {...motionProps}
     >

@@ -28,7 +28,8 @@ import {
   Activity,
   Maximize2,
   Minimize2,
-  Power
+  Power,
+  MessageSquare
 } from 'lucide-react';
 
 export default function App() {
@@ -78,59 +79,76 @@ export default function App() {
       <BackgroundEngine theme={currentTheme} />
 
       {/* 3-Column main layout */}
-      <div className="flex-1 flex overflow-hidden p-6 gap-6 relative z-10">
+      <div className="flex-1 flex overflow-hidden p-8 gap-8 relative z-10">
         {/* Left Column: Volumetric 3D Floating Server Navigation Globe Controls */}
         <ServerNavigation currentTheme={currentTheme} />
 
         {/* Middle Column: Channels navigation */}
-        <GlassPanel className="w-64 flex flex-col p-5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
+        <GlassPanel className="w-64 flex flex-col p-6 shadow-[0_30px_70px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.25)] rounded-2xl" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
           <div className="flex items-center justify-between mb-6">
             <h2 className={`text-xs font-black tracking-widest uppercase ${themeConfig.styles.textPrimary}`}>Channels Lobby</h2>
           </div>
-          <div className="flex-1 flex flex-col gap-2.5">
-            <div className={`px-4 py-3 rounded-xl bg-white/5 border border-white/5 flex items-center gap-3 cursor-pointer ${themeConfig.styles.textPrimary}`}>
+          <div className="flex-1 flex flex-col gap-3">
+            <div className={`px-4 py-3.5 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center gap-3 cursor-pointer shadow-inner ${themeConfig.styles.textPrimary}`}>
               # welcome-lobby
             </div>
-            <div className="px-4 py-3 rounded-xl flex items-center gap-3 cursor-pointer text-white/40 hover:bg-white/5 hover:text-white transition-all text-sm font-semibold">
+            <div className="px-4 py-3.5 rounded-2xl flex items-center gap-3 cursor-pointer text-white/40 hover:bg-white/[0.04] hover:text-white transition-all text-sm font-semibold">
               # announcement
             </div>
-            <div className="px-4 py-3 rounded-xl flex items-center gap-3 cursor-pointer text-white/40 hover:bg-white/5 hover:text-white transition-all text-sm font-semibold">
+            <div className="px-4 py-3.5 rounded-2xl flex items-center gap-3 cursor-pointer text-white/40 hover:bg-white/[0.04] hover:text-white transition-all text-sm font-semibold">
               # general-chat
             </div>
           </div>
         </GlassPanel>
 
         {/* Right Column: Dynamic Workspace Showcase / widgets */}
-        <div className="flex-1 flex gap-6">
+        <div className="flex-1 flex gap-8">
           {/* Main Space */}
-          <GlassPanel className="flex-1 p-6 flex flex-col justify-between shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
+          <GlassPanel className="flex-1 p-6 flex flex-col justify-between shadow-[0_30px_70px_rgba(0,0,0,0.6)]" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
             <div className="flex justify-between items-start">
               <div>
-                <h1 className={`text-4xl font-black tracking-widest uppercase ${themeConfig.styles.textPrimary}`}>SYNORA</h1>
-                <p className={`text-xs mt-1 font-bold ${themeConfig.styles.textSecondary}`}>NEXT-GENERATION COMMUNICATION OPERATING SYSTEM</p>
+                <h1 className={`text-3xl font-black tracking-widest uppercase ${themeConfig.styles.textPrimary}`}>SYNORA</h1>
+                <p className={`text-[10px] mt-1 font-bold ${themeConfig.styles.textSecondary}`}>3D SPATIAL COMMUNICATION ENGINE</p>
               </div>
 
               {/* Status Info indicator */}
-              <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+              <div className="flex items-center gap-2.5 bg-white/[0.04] px-4 py-2 rounded-full border border-white/10 shadow-inner">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] uppercase font-bold tracking-wider text-white/70">Engine Connected</span>
+                <span className="text-[9px] uppercase font-black tracking-widest text-white/80">Diagnostics Stable</span>
               </div>
             </div>
 
-            {/* Workspace visual showcase container */}
-            <div className="my-8 flex-1 flex flex-col justify-center items-center text-center gap-4">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-cyan-400 to-fuchsia-500 flex items-center justify-center shadow-lg animate-bounce">
-                <Sparkles className="text-white" size={32} />
+            {/* Immersive messaging and feed cards with depth layers */}
+            <div className="flex-1 overflow-y-auto my-6 flex flex-col gap-4 pr-1">
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_15px_30px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-start gap-4 transform transition-all duration-300 hover:translate-y-[-4px] hover:shadow-[0_20px_45px_rgba(0,0,0,0.4)]">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-white font-bold shadow-md">S</div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-white">System Host</span>
+                    <span className="text-[9px] bg-cyan-500/10 border border-cyan-400/20 text-cyan-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Staff</span>
+                  </div>
+                  <p className="text-xs text-white/70 mt-1 leading-relaxed">
+                    "Welcome to Synora V2. The entire client has been rebuilt with custom Three.js particles and volumetric material elements."
+                  </p>
+                </div>
               </div>
-              <h2 className={`text-2xl font-black uppercase tracking-wider ${themeConfig.styles.textPrimary}`}>Operating System Interface ready</h2>
-              <p className={`text-sm max-w-md ${themeConfig.styles.textSecondary}`}>
-                A gorgeous communication workspace environment emphasizing performance, visual aesthetics, and fluid animations. Press <kbd className="bg-white/10 px-1.5 py-0.5 rounded text-xs font-mono font-bold">CTRL + SPACE</kbd> to access the Command Center.
-              </p>
+
+              <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_15px_30px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-start gap-4 transform transition-all duration-300 hover:translate-y-[-4px] hover:shadow-[0_20px_45px_rgba(0,0,0,0.4)]">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-400 to-purple-500 flex items-center justify-center text-white font-bold shadow-md">A</div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-white">Aria Resident</span>
+                  </div>
+                  <p className="text-xs text-white/70 mt-1 leading-relaxed">
+                    "The spatial physics feel incredibly smooth. The 3D spheres on the left react to my cursor movement perfectly."
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="flex justify-between items-center text-xs font-mono text-white/40 border-t border-white/10 pt-4">
-              <span>ACTIVE USER: SYNORA RESIDENT</span>
-              <span>VERSION 1.0.0 (PHASE 1 FOUNDATION)</span>
+            <div className="flex justify-between items-center text-[10px] font-mono text-white/40 border-t border-white/10 pt-4">
+              <span>ACTIVE USER: SYNORA ENGINE</span>
+              <span>SYNORA v2.0 (TACTILE MATERIAL PLATFORM)</span>
             </div>
           </GlassPanel>
 
