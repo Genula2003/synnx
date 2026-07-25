@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GlassPanel } from '@synora/ui';
 import { getTheme } from '@synora/theme-engine';
 import { BackgroundEngine } from './BackgroundEngine';
+import { ServerNavigation } from './ServerNavigation';
 import {
   ProfileWidget,
   FriendsWidget,
@@ -56,12 +57,18 @@ export default function App() {
       setDiagnosticsOpen(prev => !prev);
     };
 
+    const handleToggleCommandCenter = () => {
+      setCommandCenterOpen(prev => !prev);
+    };
+
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('toggle-diagnostics', handleToggleDiagnostics);
+    window.addEventListener('toggle-command-center', handleToggleCommandCenter);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('toggle-diagnostics', handleToggleDiagnostics);
+      window.removeEventListener('toggle-command-center', handleToggleCommandCenter);
     };
   }, []);
 
@@ -72,18 +79,11 @@ export default function App() {
 
       {/* 3-Column main layout */}
       <div className="flex-1 flex overflow-hidden p-6 gap-6 relative z-10">
-        {/* Left Column: Servers & Dock navigation icons */}
-        <div className="w-20 flex flex-col gap-5 items-center py-2">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-2xl shadow-[0_8px_20px_rgba(6,182,212,0.3)] cursor-pointer hover:scale-110 active:scale-95 transition-all">
-            S
-          </div>
-          <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 font-bold text-xl cursor-pointer hover:scale-110 hover:bg-white/10 hover:text-white hover:border-white/20 active:scale-95 transition-all">
-            +
-          </div>
-        </div>
+        {/* Left Column: Volumetric 3D Floating Server Navigation Globe Controls */}
+        <ServerNavigation currentTheme={currentTheme} />
 
         {/* Middle Column: Channels navigation */}
-        <GlassPanel className="w-64 flex flex-col p-5" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
+        <GlassPanel className="w-64 flex flex-col p-5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
           <div className="flex items-center justify-between mb-6">
             <h2 className={`text-xs font-black tracking-widest uppercase ${themeConfig.styles.textPrimary}`}>Channels Lobby</h2>
           </div>
@@ -103,7 +103,7 @@ export default function App() {
         {/* Right Column: Dynamic Workspace Showcase / widgets */}
         <div className="flex-1 flex gap-6">
           {/* Main Space */}
-          <GlassPanel className="flex-1 p-6 flex flex-col justify-between" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
+          <GlassPanel className="flex-1 p-6 flex flex-col justify-between shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]" blur={themeConfig.defaults.blur} transparency={themeConfig.defaults.transparency} radius={themeConfig.defaults.radius}>
             <div className="flex justify-between items-start">
               <div>
                 <h1 className={`text-4xl font-black tracking-widest uppercase ${themeConfig.styles.textPrimary}`}>SYNORA</h1>
